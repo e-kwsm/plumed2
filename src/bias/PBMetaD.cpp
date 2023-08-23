@@ -316,8 +316,8 @@ private:
   void   readGaussians(unsigned iarg, IFile*);
   void   writeGaussian(unsigned iarg, const Gaussian&, OFile*);
   void   addGaussian(unsigned iarg, const Gaussian&);
-  double getBiasAndDerivatives(unsigned iarg, const std::vector<double>&, double* der=NULL);
-  double evaluateGaussian(unsigned iarg, const std::vector<double>&, const Gaussian&,double* der=NULL);
+  double getBiasAndDerivatives(unsigned iarg, const std::vector<double>&, double* der=nullptr);
+  double evaluateGaussian(unsigned iarg, const std::vector<double>&, const Gaussian&,double* der=nullptr);
   std::vector<unsigned> getGaussianSupport(unsigned iarg, const Gaussian&);
   bool   scanOneHill(unsigned iarg, IFile *ifile,  std::vector<Value> &v, std::vector<double> &center, std::vector<double>  &sigma, double &height, bool &multivariate);
 
@@ -1032,7 +1032,7 @@ double PBMetaD::evaluateGaussian(unsigned iarg, const std::vector<double>& cv, c
 // I use a pointer here because cv is const (and should be const)
 // but when using doInt it is easier to locally replace cv[0] with
 // the upper/lower limit in case it is out of range
-  const double *pcv=NULL;
+  const double *pcv=nullptr;
   double tmpcv[1]; // tmp array with cv (to be used with doInt_)
   tmpcv[0]=cv[0];
   bool isOutOfInt = false;

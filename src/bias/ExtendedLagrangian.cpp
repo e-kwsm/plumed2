@@ -154,8 +154,8 @@ ExtendedLagrangian::ExtendedLagrangian(const ActionOptions&ao):
   kappa(getNumberOfArguments(),0.0),
   tau(getNumberOfArguments(),0.0),
   friction(getNumberOfArguments(),0.0),
-  fictValue(getNumberOfArguments(),NULL),
-  vfictValue(getNumberOfArguments(),NULL),
+  fictValue(getNumberOfArguments(),nullptr),
+  vfictValue(getNumberOfArguments(),nullptr),
   kbt(0.0)
 {
   parseVector("TAU",tau);

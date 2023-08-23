@@ -128,11 +128,11 @@ int main(){
   plumed.cmd("readInputLine","m2: METAD ARG=d PACE=2 SIGMA=5 HEIGHT=1 FILE=H2 FMT=%9.5f");
   plumed.cmd("readInputLine","PRINT ARG=d,d1,m1.bias FILE=COLVAR FMT=%9.5f");
 
-  test_this(ofs,plumed,"something random here",NULL);
+  test_this(ofs,plumed,"something random here",nullptr);
   for(int step=0;step<3;step++){
 
 // this should fail
-    test_this(ofs,plumed,"setStep",NULL);
+    test_this(ofs,plumed,"setStep",nullptr);
 
     plumed.cmd("setStep",&step);
     plumed.cmd("setPositions",&positions[0]);

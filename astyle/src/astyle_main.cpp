@@ -1133,7 +1133,7 @@ void ASConsole::getFileNames(const string& directory, const vector<string>& wild
 string ASConsole::getFullPathName(const string& relativePath) const
 {
 	char fullPath[MAX_PATH];
-	GetFullPathName(relativePath.c_str(), MAX_PATH, fullPath, NULL);
+	GetFullPathName(relativePath.c_str(), MAX_PATH, fullPath, nullptr);
 	return fullPath;
 }
 

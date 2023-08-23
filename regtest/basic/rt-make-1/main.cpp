@@ -7,7 +7,7 @@
 
 using namespace PLMD;
 
-int run(int boxtype,double* av_nshifts=NULL){
+int run(int boxtype,double* av_nshifts=nullptr){
   Random r;
   int failures=0;
   r.setSeed(-20);

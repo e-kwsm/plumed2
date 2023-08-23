@@ -96,7 +96,7 @@ extern "C"{
  \
  \
   cmd(p,(char*)"setNatoms",&natoms); \
-  cmd(p,(char*)"init",NULL); \
+  cmd(p,(char*)"init",nullptr); \
   cmd(p,(char*)"readInputLine",(char*)"d: DISTANCE ATOMS=1,2"); \
   cmd(p,(char*)"readInputLine",(char*)"PRINT ARG=d FILE=COLVAR RESTART=YES"); \
   int step=1; \
@@ -105,7 +105,7 @@ extern "C"{
   cmd(p,(char*)"setMasses",&masses[0]); \
   cmd(p,(char*)"setForces",&forces[0]); \
   cmd(p,(char*)"setVirial",&virial[0]); \
-  cmd(p,(char*)"calc",NULL); \
+  cmd(p,(char*)"calc",nullptr); \
 }
 
 #define TESTME(X) \
@@ -118,7 +118,7 @@ extern "C"{
  \
  \
   X((char*)"setNatoms",&natoms); \
-  X((char*)"init",NULL); \
+  X((char*)"init",nullptr); \
   X((char*)"readInputLine",(char*)"d: DISTANCE ATOMS=1,2"); \
   X((char*)"readInputLine",(char*)"PRINT ARG=d FILE=COLVAR RESTART=YES"); \
   int step=1; \
@@ -127,7 +127,7 @@ extern "C"{
   X((char*)"setMasses",&masses[0]); \
   X((char*)"setForces",&forces[0]); \
   X((char*)"setVirial",&virial[0]); \
-  X((char*)"calc",NULL); \
+  X((char*)"calc",nullptr); \
 }
 
 #define testme(cmd) \
@@ -140,7 +140,7 @@ extern "C"{
  \
  \
   cmd((char*)"setNatoms",&natoms); \
-  cmd((char*)"init",NULL); \
+  cmd((char*)"init",nullptr); \
   cmd((char*)"readInputLine",(char*)"d: DISTANCE ATOMS=1,2"); \
   cmd((char*)"readInputLine",(char*)"PRINT ARG=d FILE=COLVAR RESTART=YES"); \
   int step=1; \
@@ -149,7 +149,7 @@ extern "C"{
   cmd((char*)"setMasses",&masses[0]); \
   cmd((char*)"setForces",&forces[0]); \
   cmd((char*)"setVirial",&virial[0]); \
-  cmd((char*)"calc",NULL); \
+  cmd((char*)"calc",nullptr); \
 }
 
 void testmecpp(PLMD::Plumed p){
@@ -161,7 +161,7 @@ void testmecpp(PLMD::Plumed p){
 
 
   p.cmd((char*)"setNatoms",&natoms);
-  p.cmd((char*)"init",NULL);
+  p.cmd((char*)"init",nullptr);
   p.cmd((char*)"readInputLine",(char*)"d: DISTANCE ATOMS=1,2");
   p.cmd((char*)"readInputLine",(char*)"PRINT ARG=d FILE=COLVAR RESTART=YES");
   int step=1;
@@ -170,7 +170,7 @@ void testmecpp(PLMD::Plumed p){
   p.cmd((char*)"setMasses",&masses[0]);
   p.cmd((char*)"setForces",&forces[0]);
   p.cmd((char*)"setVirial",&virial[0]);
-  p.cmd((char*)"calc",NULL);
+  p.cmd((char*)"calc",nullptr);
 //plumed_forget_ptr(p,&masses[0]);
 }
 

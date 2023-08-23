@@ -34,7 +34,7 @@ ClusterAnalysisBase::ClusterAnalysisBase(const ActionOptions& ao):
   MultiColvarBase(ao),
   myfvals(0,0),
   myfatoms( myfvals, this ),
-  myclusters(NULL)
+  myclusters(nullptr)
 {
   // This makes these colvars behave appropriately with dump and analysis
   matsums=usespecies=true; std::vector<AtomNumber> fake_atoms;

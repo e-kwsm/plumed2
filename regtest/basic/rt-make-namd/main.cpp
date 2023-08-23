@@ -80,7 +80,7 @@ int main(){
 
     for(int i=0;i<forces.size();i++) forces[i]=0.0;
 
-// std::cerr<<"mass "<<&masses[0]<<" "<<(&masses[0]==NULL)<<"\n";
+// std::cerr<<"mass "<<&masses[0]<<" "<<(&masses[0]==nullptr)<<"\n";
     plumed->cmd("setMasses",(masses.empty()?nullptr:&masses[0]));
     plumed->cmd("setCharges",(charges.empty()?nullptr:&charges[0]));
     plumed->cmd("setPositions",(positions.empty()?nullptr:&positions[0]));

@@ -247,7 +247,7 @@ void Driver<real>::registerKeywords( Keywords& keys ) {
   keys.add("hidden","--debug-grex-log","log file for debug=grex");
 #ifdef __PLUMED_HAS_MOLFILE_PLUGINS
   MOLFILE_INIT_ALL
-  MOLFILE_REGISTER_ALL(NULL, register_cb)
+  MOLFILE_REGISTER_ALL(nullptr, register_cb)
   for(unsigned i=0; i<plugins.size(); i++) {
     std::string kk="--mf_"+std::string(plugins[i]->name);
     std::string mm=" molfile: the trajectory in "+std::string(plugins[i]->name)+" format " ;
@@ -343,7 +343,7 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
 // set up for debug replica exchange:
   bool debug_grex=parse("--debug-grex",fakein);
   int  grex_stride=0;
-  FILE*grex_log=NULL;
+  FILE*grex_log=nullptr;
 // call fclose when fp goes out of scope
   auto deleter=[](FILE* f) { if(f) std::fclose(f); };
   std::unique_ptr<FILE,decltype(deleter)> grex_log_deleter(grex_log,deleter);
@@ -386,7 +386,7 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
   std::string trajectory_fmt;
 
   bool use_molfile=false;
-  molfile_plugin_t *api=NULL;
+  molfile_plugin_t *api=nullptr;
 
 // Read in an xyz file
   std::string trajectoryFile(""), pdbfile(""), mcfile("");
@@ -494,7 +494,7 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
       api->close_file_read(h_in);
     }
   };
-  void *h_in=NULL;
+  void *h_in=nullptr;
   std::unique_ptr<void,decltype(mf_deleter)> h_in_deleter(h_in,mf_deleter);
 
   molfile_timestep_t ts_in; // this is the structure that has the timestep
@@ -502,7 +502,7 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
 // it is necessary in order to store the pointer to ts_in.coords
   std::vector<float> ts_in_coords;
   ts_in.coords=ts_in_coords.data();
-  ts_in.velocities=NULL;
+  ts_in.velocities=nullptr;
   ts_in.A=-1; // we use this to check whether cell is provided or not
 #endif
 
@@ -547,14 +547,14 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
   }
 
 
-  FILE* fp=NULL; FILE* fp_forces=NULL; OFile fp_dforces;
+  FILE* fp=nullptr; FILE* fp_forces=nullptr; OFile fp_dforces;
 
   std::unique_ptr<FILE,decltype(deleter)> fp_deleter(fp,deleter);
   std::unique_ptr<FILE,decltype(deleter)> fp_forces_deleter(fp_forces,deleter);
 
   auto xdr_deleter=[](xdrfile::XDRFILE* xd) { if(xd) xdrfile::xdrfile_close(xd); };
 
-  xdrfile::XDRFILE* xd=NULL;
+  xdrfile::XDRFILE* xd=nullptr;
 
   std::unique_ptr<xdrfile::XDRFILE,decltype(xdr_deleter)> xd_deleter(xd,xdr_deleter);
 
@@ -878,7 +878,7 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
         float prec,lambda;
         int ret=xdrfile::exdrOK;
         if(trajectory_fmt=="xdr-xtc") ret=xdrfile::read_xtc(xd,natoms,&localstep,&time,box,pos.get(),&prec);
-        if(trajectory_fmt=="xdr-trr") ret=xdrfile::read_trr(xd,natoms,&localstep,&time,&lambda,box,pos.get(),NULL,NULL);
+        if(trajectory_fmt=="xdr-trr") ret=xdrfile::read_trr(xd,natoms,&localstep,&time,&lambda,box,pos.get(),nullptr,nullptr);
         if(stride==0) step=localstep;
         if(ret==xdrfile::exdrENDOFFILE) break;
         if(ret!=xdrfile::exdrOK) break;
@@ -938,12 +938,12 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
               //
               const char      *p1, *p2, *p3;
               p1 = std::strchr(line.c_str(), '.');
-              if (p1 == NULL) error("seems there are no coordinates in the gro file");
+              if (p1 == nullptr) error("seems there are no coordinates in the gro file");
               p2 = std::strchr(&p1[1], '.');
-              if (p2 == NULL) error("seems there is only one coordinates in the gro file");
+              if (p2 == nullptr) error("seems there is only one coordinates in the gro file");
               ddist = p2 - p1;
               p3 = std::strchr(&p2[1], '.');
-              if (p3 == NULL)error("seems there are only two coordinates in the gro file");
+              if (p3 == nullptr)error("seems there are only two coordinates in the gro file");
               if (p3 - p2 != ddist)error("not uniform spacing in fields in the gro file");
             }
             Tools::convert(line.substr(20,ddist),cc[0]);
@@ -1009,7 +1009,7 @@ int Driver<real>::main(FILE* in,FILE*out,Communicator& pc) {
 // this is required to avoid troubles when the last domain
 // contains zero atoms
 // Basically, for empty domains we pass null pointers
-#define fix_pd(xx) (pd_nlocal!=0?&xx:NULL)
+#define fix_pd(xx) (pd_nlocal!=0?&xx:nullptr)
         p.cmd("setForces",fix_pd(forces[3*pd_start]),3*pd_nlocal);
         p.cmd("setPositions",fix_pd(coordinates[3*pd_start]),3*pd_nlocal);
         p.cmd("setMasses",fix_pd(masses[pd_start]),pd_nlocal);

@@ -38,7 +38,7 @@ void ActionWithInputMatrix::registerKeywords( Keywords& keys ) {
 ActionWithInputMatrix::ActionWithInputMatrix(const ActionOptions& ao):
   Action(ao),
   MultiColvarBase(ao),
-  mymatrix(NULL)
+  mymatrix(nullptr)
 {
   matsums=true;
   if( keywords.exists("MATRIX") ) {

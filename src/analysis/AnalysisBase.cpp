@@ -42,7 +42,7 @@ AnalysisBase::AnalysisBase(const ActionOptions&ao):
   ActionAtomistic(ao),
   ActionWithArguments(ao),
   ActionWithVessel(ao),
-  my_input_data(NULL)
+  my_input_data(nullptr)
 {
   // We have an if statement here so that this doesn't break with READ_DISSIMILARITIES
   if( keywords.exists("USE_OUTPUT_DATA_FROM") ) {

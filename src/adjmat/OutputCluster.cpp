@@ -103,7 +103,7 @@ void OutputCluster::registerKeywords( Keywords& keys ) {
 OutputCluster::OutputCluster(const ActionOptions& ao):
   Action(ao),
   ActionPilot(ao),
-  myclusters(NULL)
+  myclusters(nullptr)
 {
   // Setup output file
   ofile.link(*this); std::string file; parse("FILE",file);

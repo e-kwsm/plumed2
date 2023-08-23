@@ -77,7 +77,7 @@ void DumpGraph::registerKeywords( Keywords& keys ) {
 DumpGraph::DumpGraph( const ActionOptions& ao):
   Action(ao),
   ActionPilot(ao),
-  mymatrix(NULL)
+  mymatrix(nullptr)
 {
   parse("MAXCONNECT",maxconnections); std::string mstring; parse("MATRIX",mstring);
   AdjacencyMatrixBase* mm = plumed.getActionSet().selectWithLabel<AdjacencyMatrixBase*>( mstring );

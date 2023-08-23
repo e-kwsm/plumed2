@@ -39,7 +39,7 @@ AdjacencyMatrixBase::AdjacencyMatrixBase(const ActionOptions& ao):
   MultiColvarBase(ao),
   connect_id(0),
   no_third_dim_accum(true),
-  mat(NULL)
+  mat(nullptr)
 {
   log<<"  Bibliography "<<plumed.cite("Tribello, Giberti, Sosso, Salvalaglio and Parrinello, J. Chem. Theory Comput. 13, 1317 (2017)")<<"\n";
 }

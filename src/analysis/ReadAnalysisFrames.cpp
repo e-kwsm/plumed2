@@ -52,7 +52,7 @@ ReadAnalysisFrames::ReadAnalysisFrames( const ActionOptions& ao ):
   Action(ao),
   AnalysisBase(ao),
   clearonnextstep(false),
-  wham_pointer(NULL),
+  wham_pointer(nullptr),
   weights_calculated(false)
 {
   parse("CLEAR",clearstride);
@@ -82,8 +82,8 @@ ReadAnalysisFrames::ReadAnalysisFrames( const ActionOptions& ao ):
   if( wwstr.size()>0 ) {
     log.printf("\n");
     wham_pointer = dynamic_cast<bias::ReweightBase*>( weight_vals[0]->getPntrToAction() );
-    if( !wham_pointer ) wham_pointer = NULL;
-    else if( !wham_pointer->buildsWeightStore() ) wham_pointer = NULL;
+    if( !wham_pointer ) wham_pointer = nullptr;
+    else if( !wham_pointer->buildsWeightStore() ) wham_pointer = nullptr;
     if( wham_pointer && weight_vals.size()!=1 ) error("can only extract weights from one wham object");
   } else log.printf("  weights are all equal to one\n");
   requestArguments( arg );

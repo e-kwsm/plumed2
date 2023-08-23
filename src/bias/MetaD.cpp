@@ -1734,7 +1734,7 @@ double MetaD::evaluateGaussian(const std::vector<double>& cv, const Gaussian& hi
   // but when using doInt it is easier to locally replace cv[0] with
   // the upper/lower limit in case it is out of range
   double tmpcv[1];
-  const double *pcv=NULL; // pointer to cv
+  const double *pcv=nullptr; // pointer to cv
   if(ncv>0) pcv=&cv[0];
   if(doInt_) {
     plumed_assert(ncv==1);
@@ -1787,7 +1787,7 @@ double MetaD::evaluateGaussianAndDerivatives(const std::vector<double>& cv, cons
   // I use a pointer here because cv is const (and should be const)
   // but when using doInt it is easier to locally replace cv[0] with
   // the upper/lower limit in case it is out of range
-  const double *pcv=NULL; // pointer to cv
+  const double *pcv=nullptr; // pointer to cv
   double tmpcv[1]; // tmp array with cv (to be used with doInt_)
   if(ncv>0) pcv=&cv[0];
   if(doInt_) {

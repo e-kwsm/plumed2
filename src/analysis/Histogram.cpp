@@ -247,7 +247,7 @@ Histogram::Histogram(const ActionOptions&ao):
     if( vlab.length()>0 ) {
       ActionWithVessel* myv = plumed.getActionSet().selectWithLabel<ActionWithVessel*>( vlab );
       if( !myv ) error("action labelled " + vlab + " does not exist or is not an ActionWithVessel");
-      myvessels.push_back( myv ); stashes.push_back( myv->buildDataStashes( NULL ) );
+      myvessels.push_back( myv ); stashes.push_back( myv->buildDataStashes( nullptr ) );
       addDependency( myv ); mvectors=true;
       if( myv->getNumberOfQuantities()!=5 ) error("can only compute histograms for three dimensional vectors");
       log.printf("  for vector quantities calculated by %s \n", vlab.c_str() );
@@ -257,7 +257,7 @@ Histogram::Histogram(const ActionOptions&ao):
         for(unsigned i=0; i<mlab.size(); ++i) {
           ActionWithVessel* myv = plumed.getActionSet().selectWithLabel<ActionWithVessel*>( mlab[i] );
           if( !myv ) error("action labelled " + mlab[i] + " does not exist or is not an ActionWithVessel");
-          myvessels.push_back( myv ); stashes.push_back( myv->buildDataStashes( NULL ) );
+          myvessels.push_back( myv ); stashes.push_back( myv->buildDataStashes( nullptr ) );
           // log.printf("  for all base quantities calculated by %s \n",myvessel->getLabel().c_str() );
           // Add the dependency
           addDependency( myv );
