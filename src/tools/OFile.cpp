@@ -73,7 +73,7 @@ size_t OFile::llwrite(const char*ptr,size_t s) {
 }
 
 OFile::OFile():
-  linked(NULL),
+  linked(nullptr),
   fieldChanged(false),
   backstring("bck"),
   enforceRestart_(false),
@@ -90,8 +90,8 @@ OFile::OFile():
 }
 
 OFile& OFile::link(OFile&l) {
-  fp=NULL;
-  gzfp=NULL;
+  fp=nullptr;
+  gzfp=nullptr;
   linked=&l;
   return *this;
 }
@@ -323,8 +323,8 @@ OFile& OFile::open(const std::string&path) {
   plumed_assert(!cloned);
   eof=false;
   err=false;
-  fp=NULL;
-  gzfp=NULL;
+  fp=nullptr;
+  gzfp=nullptr;
   this->path=path;
   this->path=appendSuffix(path,getSuffix());
   if(checkRestart()) {

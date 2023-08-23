@@ -106,16 +106,16 @@ void        FileBase::close() {
 #ifdef __PLUMED_HAS_ZLIB
   if(gzfp) gzclose(gzFile(gzfp));
 #endif
-  fp=NULL;
-  gzfp=NULL;
+  fp=nullptr;
+  gzfp=nullptr;
 }
 
 FileBase::FileBase():
-  fp(NULL),
-  gzfp(NULL),
-  comm(NULL),
-  plumed(NULL),
-  action(NULL),
+  fp(nullptr),
+  gzfp(nullptr),
+  comm(nullptr),
+  plumed(nullptr),
+  action(nullptr),
   cloned(false),
   eof(false),
   err(false),

@@ -48,7 +48,7 @@ void* DLLoader::load(const std::string&s) {
   }
   return p;
 #else
-  return NULL;
+  return nullptr;
 #endif
 }
 

@@ -107,8 +107,8 @@ IFile& IFile::open(const std::string&path) {
   plumed_massert(!cloned,"file "+path+" appears to be cloned");
   eof=false;
   err=false;
-  fp=NULL;
-  gzfp=NULL;
+  fp=nullptr;
+  gzfp=nullptr;
   bool do_exist=FileExist(path);
   plumed_massert(do_exist,"file " + path + " cannot be found");
   fp=std::fopen(const_cast<char*>(this->path.c_str()),"r");

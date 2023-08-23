@@ -413,7 +413,7 @@ double KernelFunctions::evaluate( const std::vector<Value*>& pos, std::vector<do
 
 std::unique_ptr<KernelFunctions> KernelFunctions::read( IFile* ifile, const bool& cholesky, const std::vector<std::string>& valnames ) {
   double h;
-  if( !ifile->scanField("height",h) ) return NULL;;
+  if( !ifile->scanField("height",h) ) return nullptr;;
 
   std::string sss; ifile->scanField("multivariate",sss);
   std::string ktype="stretched-gaussian"; if( ifile->FieldExist("kerneltype") ) ifile->scanField("kerneltype",ktype);

@@ -72,8 +72,8 @@ BasisFunctions::BasisFunctions(const ActionOptions&ao):
   numerical_uniform_integrals_(false),
   nbins_(1001),
   uniform_integrals_(nbasis_,0.0),
-  vesbias_pntr_(NULL),
-  action_pntr_(NULL)
+  vesbias_pntr_(nullptr),
+  action_pntr_(nullptr)
 {
   bf_keywords_.push_back(getName());
   if(keywords.exists("ORDER")) {
@@ -254,7 +254,7 @@ void BasisFunctions::numericalUniformIntegrals() {
 
 
 std::vector<double> BasisFunctions::numericalTargetDistributionIntegralsFromGrid(const Grid* grid_pntr) const {
-  plumed_massert(grid_pntr!=NULL,"the grid is not defined");
+  plumed_massert(grid_pntr!=nullptr,"the grid is not defined");
   plumed_massert(grid_pntr->getDimension()==1,"the target distribution grid should be one dimensional");
   //
   std::vector<double> targetdist_integrals(nbasis_,0.0);
@@ -280,7 +280,7 @@ std::vector<double> BasisFunctions::numericalTargetDistributionIntegralsFromGrid
 
 
 std::vector<double> BasisFunctions::getTargetDistributionIntegrals(const TargetDistribution* targetdist_pntr) const {
-  if(targetdist_pntr==NULL) {
+  if(targetdist_pntr==nullptr) {
     return getUniformIntegrals();
   }
   else {

@@ -223,7 +223,7 @@ bool Tools::getParsedLine(IFile& ifile,std::vector<std::string> & words, bool tr
     if(trimcomments) trimComments(line);
     trim(line);
     if(line.length()==0) continue;
-    std::vector<std::string> w=getWords(line,NULL,&parlevel,"{",trimcomments);
+    std::vector<std::string> w=getWords(line,nullptr,&parlevel,"{",trimcomments);
     if(!w.empty()) {
       if(inside && *(w.begin())=="...") {
         inside=false;

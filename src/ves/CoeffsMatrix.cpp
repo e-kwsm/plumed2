@@ -609,7 +609,7 @@ void CoeffsMatrix::writeToFile(OFile& ofile) {
 
 void CoeffsMatrix::writeToFile(const std::string& filepath, const bool append_file, Action* action_pntr) {
   OFile file;
-  if(action_pntr!=NULL) {
+  if(action_pntr!=nullptr) {
     file.link(*action_pntr);
   }
   else {

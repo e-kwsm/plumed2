@@ -687,7 +687,7 @@ size_t CoeffsVector::countValues(const double value) const {
 
 void CoeffsVector::writeToFile(const std::string& filepath, const bool print_coeffs_descriptions, const bool append_file, Action* action_pntr) {
   OFile file;
-  if(action_pntr!=NULL) {
+  if(action_pntr!=nullptr) {
     file.link(*action_pntr);
   }
   else {
@@ -719,7 +719,7 @@ void CoeffsVector::writeToFile(OFile& ofile, CoeffsVector* aux_coeffsvector, con
 
 void CoeffsVector::writeToFile(const std::string& filepath, const std::vector<CoeffsVector*>& coeffsvecSet, const bool print_coeffs_descriptions, const bool append_file, Action* action_pntr) {
   OFile file;
-  if(action_pntr!=NULL) {
+  if(action_pntr!=nullptr) {
     file.link(*action_pntr);
   }
   else {
