@@ -185,7 +185,7 @@ void Communicator::Allgatherv(ConstData in,Data out,const int*recvcounts,const i
   int*di=const_cast<int*>(displs);
 #if defined(__PLUMED_HAS_MPI)
   if(initialized()) {
-    if(s==NULL)s=MPI_IN_PLACE;
+    if(s==nullptr)s=MPI_IN_PLACE;
     MPI_Allgatherv(s,in.size,in.type,r,rc,di,out.type,communicator);
   } else {
     plumed_assert(in.nbytes==out.nbytes);
@@ -210,7 +210,7 @@ void Communicator::Allgather(ConstData in,Data out) {
   void*r=const_cast<void*>((const void*)out.pointer);
 #if defined(__PLUMED_HAS_MPI)
   if(initialized()) {
-    if(s==NULL)s=MPI_IN_PLACE;
+    if(s==nullptr)s=MPI_IN_PLACE;
     MPI_Allgather(s,in.size,in.type,r,out.size/Get_size(),out.type,communicator);
   } else {
     plumed_assert(in.nbytes==out.nbytes);

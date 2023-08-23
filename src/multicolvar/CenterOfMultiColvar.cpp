@@ -124,7 +124,7 @@ CenterOfMultiColvar::CenterOfMultiColvar(const ActionOptions&ao):
   }
   // We need the derivatives
   mycolv->turnOnDerivatives(); addDependency(mycolv);
-  mystash = mycolv->buildDataStashes( NULL );
+  mystash = mycolv->buildDataStashes( nullptr );
   log.printf("  building center of mass based on weights calculated in multicolvar action named %s \n",mycolv->getLabel().c_str() );
 }
 

@@ -586,8 +586,8 @@ LogMFD::LogMFD( const ActionOptions& ao ):
   weight(0.0),
   ffict(getNumberOfArguments(),0.0),
   fict_ave(getNumberOfArguments(),0.0),
-  fictValue(getNumberOfArguments(),NULL),
-  vfictValue(getNumberOfArguments(),NULL)
+  fictValue(getNumberOfArguments(),nullptr),
+  vfictValue(getNumberOfArguments(),nullptr)
 {
   backup.fict.resize(getNumberOfArguments(),0.0);
   backup.vfict.resize(getNumberOfArguments(),0.0);

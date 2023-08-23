@@ -366,7 +366,7 @@ OPESmetad<mode>::OPESmetad(const ActionOptions& ao)
   , ncv_(getNumberOfArguments())
   , Zed_(1)
   , work_(0)
-  , excluded_region_(NULL)
+  , excluded_region_(nullptr)
 {
   std::string error_in_input1("Error in input in action "+getName()+" with label "+getLabel()+": the keyword ");
   std::string error_in_input2(" could not be read correctly");
@@ -868,7 +868,7 @@ OPESmetad<mode>::OPESmetad(const ActionOptions& ao)
   log.printf("  using target distribution with BIASFACTOR gamma = %g\n",biasfactor_);
   if(std::isinf(biasfactor_))
     log.printf("    (thus a uniform flat target distribution, no well-tempering)\n");
-  if(excluded_region_!=NULL)
+  if(excluded_region_!=nullptr)
     log.printf(" -- EXCLUDED_REGION: kernels will be deposited only when '%s' is equal to zero\n",excluded_region_->getName().c_str());
   if(extra_biases_.size()>0)
   {
@@ -1015,7 +1015,7 @@ void OPESmetad<mode>::update()
   }
 
 //do update
-  if(getStep()%stride_==0 && (excluded_region_==NULL || excluded_region_->get()==0))
+  if(getStep()%stride_==0 && (excluded_region_==nullptr || excluded_region_->get()==0))
   {
     old_KDEnorm_=KDEnorm_;
     delta_kernels_.clear();

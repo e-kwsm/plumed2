@@ -207,7 +207,7 @@ int PathTools::main(FILE* in, FILE*out,Communicator& pc) {
       mypdb.setAtomPositions( frames[i]->getReferencePositions() );
       for(unsigned j=0; j<argnames.size(); ++j) mypdb.setArgumentValue( argnames[j], frames[i]->getReferenceArguments()[j] );
       ofile.printf("REMARK TYPE=%s\n",mtype.c_str() );
-      mypdb.print( 10, NULL, ofile, ofmt );
+      mypdb.print( 10, nullptr, ofile, ofmt );
     }
     // Delete the vals as we don't need them
     // for(unsigned i=0; i<vals.size(); ++i) delete vals[i];
@@ -285,7 +285,7 @@ int PathTools::main(FILE* in, FILE*out,Communicator& pc) {
     mypdb.setAtomPositions( pos.getReferencePositions() );
     for(unsigned j=0; j<pos.getReferenceArguments().size(); ++j) mypdb.setArgumentValue( sframe->getArgumentNames()[j], pos.getReferenceArgument(j) );
     ofile.printf("REMARK TYPE=%s\n",mtype.c_str() );
-    mypdb.print( 10, NULL, ofile, ofmt ); nframes++;
+    mypdb.print( 10, nullptr, ofile, ofmt ); nframes++;
   }
   for(unsigned i=1; i<nbetween; ++i) {
     pos.setDirection( sframe->getReferencePositions(), sframe->getReferenceArguments() );
@@ -293,7 +293,7 @@ int PathTools::main(FILE* in, FILE*out,Communicator& pc) {
     mypdb.setAtomPositions( pos.getReferencePositions() );
     for(unsigned j=0; j<pos.getReferenceArguments().size(); ++j) mypdb.setArgumentValue( sframe->getArgumentNames()[j], pos.getReferenceArgument(j) );
     ofile.printf("REMARK TYPE=%s\n",mtype.c_str() );
-    mypdb.print( 10, NULL, ofile, ofmt ); nframes++;
+    mypdb.print( 10, nullptr, ofile, ofmt ); nframes++;
   }
   for(unsigned i=0; i<nafter; ++i) {
     pos.setDirection( eframe->getReferencePositions(), eframe->getReferenceArguments() );
@@ -301,7 +301,7 @@ int PathTools::main(FILE* in, FILE*out,Communicator& pc) {
     mypdb.setAtomPositions( pos.getReferencePositions() );
     for(unsigned j=0; j<pos.getReferenceArguments().size(); ++j) mypdb.setArgumentValue( sframe->getArgumentNames()[j], pos.getReferenceArgument(j) );
     ofile.printf("REMARK TYPE=%s\n",mtype.c_str() );
-    mypdb.print( 10, NULL, ofile, ofmt ); nframes++;
+    mypdb.print( 10, nullptr, ofile, ofmt ); nframes++;
   }
 
   ofile.close(); return 0;

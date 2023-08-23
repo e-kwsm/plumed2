@@ -93,14 +93,14 @@ static void *open_pdb_read(const char *filepath, const char *filetype,
 
   fd = fopen(filepath, "r");
   if (!fd) 
-    return NULL;
+    return nullptr;
   pdb = (pdbdata *)malloc(sizeof(pdbdata));
   pdb->fd = fd;
   pdb->meta = (molfile_metadata_t *) malloc(sizeof(molfile_metadata_t));
   memset(pdb->meta, 0, sizeof(molfile_metadata_t));
 
   pdb->meta->remarklen = 0;
-  pdb->meta->remarks = NULL;
+  pdb->meta->remarks = nullptr;
 
   *natoms=0;
   nconect=0;
@@ -111,7 +111,7 @@ static void *open_pdb_read(const char *filepath, const char *filetype,
     } else if (indx == PDB_CONECT) {
       nconect++;
     } else if (indx == PDB_HEADER) {
-      get_pdb_header(pdbstr, pdb->meta->accession, pdb->meta->date, NULL);
+      get_pdb_header(pdbstr, pdb->meta->accession, pdb->meta->date, nullptr);
       if (strlen(pdb->meta->accession) > 0) 
         strcpy(pdb->meta->database, "PDB");
     } else if (indx == PDB_REMARK || indx == PDB_CONECT || indx == PDB_UNKNOWN) {
@@ -119,7 +119,7 @@ static void *open_pdb_read(const char *filepath, const char *filetype,
       int newlen = len + pdb->meta->remarklen;
 
       char *newstr=(char*)realloc(pdb->meta->remarks, newlen + 1);
-      if (newstr != NULL) {
+      if (newstr != nullptr) {
         pdb->meta->remarks = newstr;
         pdb->meta->remarks[pdb->meta->remarklen] = '\0';
         memcpy(pdb->meta->remarks + pdb->meta->remarklen, pdbstr, len);
@@ -133,12 +133,12 @@ static void *open_pdb_read(const char *filepath, const char *filetype,
   /* If no atoms were found, this is probably not a PDB file! */
   if (!*natoms) {
     fprintf(stderr, "PDB file '%s' contains no atoms.\n", filepath);
-    if (pdb->meta->remarks != NULL)
+    if (pdb->meta->remarks != nullptr)
       free(pdb->meta->remarks);
-    if (pdb->meta != NULL)
+    if (pdb->meta != nullptr)
       free(pdb->meta);
     free(pdb);
-    return NULL;
+    return nullptr;
   }
 
   rewind(pdb->fd); /* if ok, rewind file and prepare to parse it for real */
@@ -146,10 +146,10 @@ static void *open_pdb_read(const char *filepath, const char *filetype,
   pdb->nconect = nconect;
   pdb->nbonds = 0;
   pdb->maxbnum = 0;
-  pdb->from = NULL;
-  pdb->to = NULL;
-  pdb->idxmap = NULL;
-  pdb->atomlist = NULL;
+  pdb->from = nullptr;
+  pdb->to = nullptr;
+  pdb->idxmap = nullptr;
+  pdb->atomlist = nullptr;
 
 #if defined(VMDUSECONECTRECORDS)
   /* allocate atom index translation table if we have 99,999 atoms or less */
@@ -186,9 +186,9 @@ static int read_pdb_structure(void *mydata, int *optflags,
       get_pdb_fields(pdbrec, strlen(pdbrec), &atomserial, 
           atom->name, atom->resname, atom->chain, atom->segid, 
           ridstr, atom->insertion, atom->altloc, elementsymbol,
-          NULL, NULL, NULL, &atom->occupancy, &atom->bfactor);
+          nullptr, nullptr, nullptr, &atom->occupancy, &atom->bfactor);
 
-      if (pdb->idxmap != NULL && atomserial < 100000) {
+      if (pdb->idxmap != nullptr && atomserial < 100000) {
         pdb->idxmap[atomserial] = i; /* record new serial number translation */ 
       }
  
@@ -211,7 +211,7 @@ static int read_pdb_structure(void *mydata, int *optflags,
     case PDB_CONECT:
       /* only read CONECT records for structures where we know they can */
       /* be valid for all of the atoms in the structure                 */
-      if (pdb->idxmap != NULL) {
+      if (pdb->idxmap != nullptr) {
         get_pdb_conect(pdbrec, pdb->natoms, pdb->idxmap, 
                        &pdb->maxbnum, &pdb->nbonds, &pdb->from, &pdb->to);
       }
@@ -241,12 +241,12 @@ static int read_bonds(void *v, int *nbonds, int **fromptr, int **toptr,
   pdbdata *pdb = (pdbdata *)v;
   
   *nbonds = 0;
-  *fromptr = NULL;
-  *toptr = NULL;
-  *bondorder = NULL; /* PDB files don't have bond order information */
-  *bondtype = NULL;
+  *fromptr = nullptr;
+  *toptr = nullptr;
+  *bondorder = nullptr; /* PDB files don't have bond order information */
+  *bondtype = nullptr;
   *nbondtypes = 0;
-  *bondtypename = NULL;
+  *bondtypename = nullptr;
 
 /* The newest plugin API allows us to return CONECT records as 
  * additional bonds above and beyond what the distance search returns.
@@ -320,13 +320,13 @@ static int read_next_timestep(void *v, int natoms, molfile_timestep_t *ts) {
 
 static void close_pdb_read(void *v) { 
   pdbdata *pdb = (pdbdata *)v;
-  if (pdb->fd != NULL)
+  if (pdb->fd != nullptr)
     fclose(pdb->fd);
-  if (pdb->idxmap != NULL)
+  if (pdb->idxmap != nullptr)
     free(pdb->idxmap);
-  if (pdb->meta->remarks != NULL)
+  if (pdb->meta->remarks != nullptr)
     free(pdb->meta->remarks);
-  if (pdb->meta != NULL) 
+  if (pdb->meta != nullptr) 
     free(pdb->meta);
   free(pdb);
 }
@@ -339,12 +339,12 @@ static void *open_file_write(const char *path, const char *filetype,
   fd = fopen(path, "w");
   if (!fd) {
     fprintf(stderr, "Unable to open file %s for writing\n", path);
-    return NULL;
+    return nullptr;
   }
   pdb = (pdbdata *)malloc(sizeof(pdbdata));
   pdb->fd = fd;
   pdb->natoms = natoms; 
-  pdb->atomlist = NULL;
+  pdb->atomlist = nullptr;
   pdb->first_frame = 1;
   return pdb;
 }

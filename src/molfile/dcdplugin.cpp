@@ -423,15 +423,15 @@ static int read_dcdheader(fio_fd fd, int *N, int *NSET, int *ISTART,
     return DCD_BADFORMAT;
   }
 
-  *FREEINDEXES = NULL;
-  *fixedcoords = NULL;
+  *FREEINDEXES = nullptr;
+  *fixedcoords = nullptr;
   if (*NAMNF != 0) {
     (*FREEINDEXES) = (int *) calloc((((ptrdiff_t)(*N))-(*NAMNF)), sizeof(int));
-    if (*FREEINDEXES == NULL)
+    if (*FREEINDEXES == nullptr)
       return DCD_BADMALLOC;
 
     *fixedcoords = (float *) calloc(((ptrdiff_t)(*N))*4L - (*NAMNF), sizeof(float));
-    if (*fixedcoords == NULL)
+    if (*fixedcoords == nullptr)
       return DCD_BADMALLOC;
 
     /* Read in index array size */
@@ -588,7 +588,7 @@ static int read_dcdstep(fio_fd fd, int N, float *X, float *Y, float *Z,
   int check_reclen = 1; /* Enable Fortran record length value safety checks */
 
   /* Fortran record length checks disabled for huge files or user request */
-  if (hugefile || (getenv("VMDDCDNOCHECKRECLEN") != NULL))
+  if (hugefile || (getenv("VMDDCDNOCHECKRECLEN") != nullptr))
     check_reclen = 0;
  
   if (charmm & DCD_HAS_64BIT_REC) {
@@ -781,7 +781,7 @@ static int write_dcdstep(fio_fd fd, int curframe, int curstep, int N,
 
   if (charmm) {
     /* write out optional unit cell */
-    if (unitcell != NULL) {
+    if (unitcell != nullptr) {
       out_integer = 48; /* 48 bytes (6 floats) */
       fio_write_int32(fd, out_integer);
       WRITE(fd, unitcell, out_integer);
@@ -876,7 +876,7 @@ static int write_dcdheader(fio_fd fd, const char *remarks, int N,
   title_string[79] = '\0';
   WRITE(fd, title_string, 80);
 
-  cur_time=time(NULL);
+  cur_time=time(nullptr);
   tmbuf=localtime(&cur_time);
   strftime(time_str, 80, "REMARKS Created %d %B, %Y at %R", tmbuf);
   WRITE(fd, time_str, 80);
@@ -909,20 +909,20 @@ static void *open_dcd_read(const char *path, const char *filetype,
   int rc;
   struct stat stbuf;
 
-  if (!path) return NULL;
+  if (!path) return nullptr;
 
 #if !(defined(_MSC_VER) && defined(FASTIO_NATIVEWIN32))
   /* See if the file exists, and get its size */
   memset(&stbuf, 0, sizeof(struct stat));
   if (stat(path, &stbuf)) {
     printf("dcdplugin) Could not access file '%s'.\n", path);
-    return NULL;
+    return nullptr;
   }
 #endif
 
   if (fio_open(path, FIO_READ, &fd) < 0) {
     printf("dcdplugin) Could not open file '%s' for reading.\n", path);
-    return NULL;
+    return nullptr;
   }
 
   dcd = (dcdhandle *)malloc(sizeof(dcdhandle));
@@ -935,7 +935,7 @@ static void *open_dcd_read(const char *path, const char *filetype,
     print_dcderror("read_dcdheader", rc);
     fio_fclose(dcd->fd);
     free(dcd);
-    return NULL;
+    return nullptr;
   }
 
   /*
@@ -976,7 +976,7 @@ static void *open_dcd_read(const char *path, const char *filetype,
       printf("dcdplugin) file '%s' appears to contain no timesteps.\n", path);
       fio_fclose(dcd->fd);
       free(dcd);
-      return NULL;
+      return nullptr;
     }
 
     newnsets = trjsize / framesize + 1;
@@ -1006,7 +1006,7 @@ static void *open_dcd_read(const char *path, const char *filetype,
       free(dcd->z);
     fio_fclose(dcd->fd);
     free(dcd);
-    return NULL;
+    return nullptr;
   }
   *natoms = dcd->natoms;
   return dcd;
@@ -1117,7 +1117,7 @@ static void *open_dcd_write(const char *path, const char *filetype,
 
   if (fio_open(path, FIO_WRITE, &fd) < 0) {
     printf("dcdplugin) Could not open file '%s' for writing\n", path);
-    return NULL;
+    return nullptr;
   }
 
   dcd = (dcdhandle *)malloc(sizeof(dcdhandle));
@@ -1128,7 +1128,7 @@ static void *open_dcd_write(const char *path, const char *filetype,
   nsavc = 1;              /* number of timesteps between written DCD frames */
   delta = 1.0;            /* length of a timestep                           */
 
-  if (getenv("VMDDCDWRITEXPLORFORMAT") != NULL) {
+  if (getenv("VMDDCDWRITEXPLORFORMAT") != nullptr) {
     with_unitcell = 0;      /* no unit cell info */
     charmm = DCD_IS_XPLOR;  /* X-PLOR format */
     printf("dcdplugin) WARNING: Writing DCD file in X-PLOR format, \n");
@@ -1147,7 +1147,7 @@ static void *open_dcd_write(const char *path, const char *filetype,
     print_dcderror("write_dcdheader", rc);
     fio_fclose(dcd->fd);
     free(dcd);
-    return NULL;
+    return nullptr;
   }
 
   dcd->natoms = natoms;
@@ -1189,7 +1189,7 @@ static int write_timestep(void *v, const molfile_timestep_t *ts) {
 
   rc = write_dcdstep(dcd->fd, dcd->nsets, curstep, dcd->natoms, 
                      dcd->x, dcd->y, dcd->z,
-                     dcd->with_unitcell ? unitcell : NULL,
+                     dcd->with_unitcell ? unitcell : nullptr,
                      dcd->charmm);
   if (rc < 0) {
     print_dcderror("write_dcdstep", rc);

@@ -117,7 +117,7 @@ static void *open_gro_read(const char *filename, const char *,
     if (!mf) {
         fprintf(stderr, "gromacsplugin) Cannot open file '%s', %s\n",
                 filename, mdio_errmsg(mdio_errno()));
-        return NULL;
+        return nullptr;
     }
 
     // read in the header data (careful not to rewind!)
@@ -126,7 +126,7 @@ static void *open_gro_read(const char *filename, const char *,
         fprintf(stderr, "gromacsplugin) Cannot read header fromm '%s', %s\n",
                 filename, mdio_errmsg(mdio_errno()));
             // XXX should free the file handle...
-        return NULL;
+        return nullptr;
     }
     *natoms = mdh.natoms;
     gmx = new gmxdata;
@@ -221,7 +221,7 @@ static void *open_gro_write(const char *filename, const char *filetype,
     if (!mf) {
         fprintf(stderr, "gromacsplugin) Cannot open file '%s', %s\n",
                 filename, mdio_errmsg(mdio_errno()));
-        return NULL;
+        return nullptr;
     }
     gmx = new gmxdata;
     memset(gmx,0,sizeof(gmxdata));
@@ -314,21 +314,21 @@ static void *open_g96_read(const char *filename, const char *,
     if (!mf) {
         fprintf(stderr, "gromacsplugin) Cannot open file '%s', %s\n",
                 filename, mdio_errmsg(mdio_errno()));
-        return NULL;
+        return nullptr;
     }
 
         // read in the header data
         if (g96_header(mf, mdh.title, MAX_MDIO_TITLE, &mdh.timeval) < 0) {
             fprintf(stderr, "gromacsplugin) Cannot read header from '%s', %s\n",
                     filename, mdio_errmsg(mdio_errno()));
-            return NULL;
+            return nullptr;
         }
 
         // First, look for a timestep block
         if (mdio_readline(mf, gbuf, MAX_G96_LINE + 1) < 0) {
             fprintf(stderr, "gromacsplugin) Cannot read header from '%s', %s\n",
                     filename, mdio_errmsg(mdio_errno()));
-            return NULL;
+            return nullptr;
         }
         if (!strcasecmp(gbuf, "TIMESTEP")) {
             // Read in the value line and the END line, and the next
@@ -337,12 +337,12 @@ static void *open_g96_read(const char *filename, const char *,
                 mdio_readline(mf, gbuf, MAX_G96_LINE + 1) < 0) {
               fprintf(stderr, "gromacsplugin) Cannot read header from '%s', %s\n",
                       filename, mdio_errmsg(mdio_errno()));
-              return NULL;
+              return nullptr;
             }
         }
         if (strcasecmp(gbuf, "POSITION") && strcasecmp(gbuf, "REFPOSITION")) {
           fprintf(stderr, "gromacsplugin) No structure information in file %s\n", filename);
-          return NULL;
+          return nullptr;
         }
         *natoms = g96_countatoms(mf);
 
@@ -488,19 +488,19 @@ static void *open_trr_read(const char *filename, const char *filetype,
     else if (!strcmp(filetype, "xtc"))
       format = MDFMT_XTC;
     else
-      return NULL;
+      return nullptr;
 
     mf = mdio_open(filename, format);
     if (!mf) {
         fprintf(stderr, "gromacsplugin) Cannot open file '%s', %s\n",
                 filename, mdio_errmsg(mdio_errno()));
-        return NULL;
+        return nullptr;
     }
     if (mdio_header(mf, &mdh) < 0) {
         mdio_close(mf);
         fprintf(stderr, "gromacsplugin) Cannot read header fromm '%s', %s\n",
                 filename, mdio_errmsg(mdio_errno()));
-        return NULL;
+        return nullptr;
     }
     *natoms = mdh.natoms;
     gmx = new gmxdata;
@@ -570,13 +570,13 @@ static void *open_trr_write(const char *filename, const char *filetype,
     else if (!strcmp(filetype, "xtc"))
       format = MDFMT_XTC;
     else
-      return NULL;
+      return nullptr;
 
     mf = mdio_open(filename, format, MDIO_WRITE);
     if (!mf) {
         fprintf(stderr, "gromacsplugin) Cannot open file '%s', %s\n",
                 filename, mdio_errmsg(mdio_errno()));
-        return NULL;
+        return nullptr;
     }
     gmx = new gmxdata;
     memset(gmx,0,sizeof(gmxdata));

@@ -83,7 +83,7 @@ static void *open_crd_read(const char *filename, const char *filetype,
   crddata *data;
  
   fd = fopen(filename, "rb");
-  if (!fd) return NULL;
+  if (!fd) return nullptr;
   
   /* first line is title, so skip past it */
   while (getc(fd) != '\n');
@@ -124,7 +124,7 @@ static int read_crd_timestep(void *mydata, int natoms, molfile_timestep_t *ts) {
 
     /* only save coords if we're given a valid ts pointer */ 
     /* otherwise assume that VMD wants us to skip it.     */
-    if (ts != NULL) {
+    if (ts != nullptr) {
       ts->coords[3*i  ] = x;
       ts->coords[3*i+1] = y;
       ts->coords[3*i+2] = z;
@@ -145,7 +145,7 @@ static int read_crd_timestep(void *mydata, int natoms, molfile_timestep_t *ts) {
 
     /* only save coords if we're given a valid ts pointer */ 
     /* otherwise assume that VMD wants us to skip it.     */
-    if (ts != NULL) {
+    if (ts != nullptr) {
       ts->A = a;
       ts->B = b;
       ts->C = c;
@@ -176,7 +176,7 @@ static void *open_crd_write(const char *path, const char *filetype,
   fd = fopen(path, "wb");
   if (!fd) {
     fprintf(stderr, "Could not open file %s for writing\n", path);
-    return NULL;
+    return nullptr;
   }
   fprintf(fd, "TITLE : Created by VMD with %d atoms\n", natoms);
   
