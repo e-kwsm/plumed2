@@ -55,14 +55,14 @@ TargetDistribution::TargetDistribution(const ActionOptions&ao):
   shift_targetdist_to_zero_(false),
   dimension_(0),
   grid_args_(0),
-  action_pntr_(NULL),
-  vesbias_pntr_(NULL),
+  action_pntr_(nullptr),
+  vesbias_pntr_(nullptr),
   needs_bias_grid_(false),
   needs_bias_withoutcutoff_grid_(false),
   needs_fes_grid_(false),
-  bias_grid_pntr_(NULL),
-  bias_withoutcutoff_grid_pntr_(NULL),
-  fes_grid_pntr_(NULL),
+  bias_grid_pntr_(nullptr),
+  bias_withoutcutoff_grid_pntr_(nullptr),
+  fes_grid_pntr_(nullptr),
   static_grid_calculated(false),
   allow_bias_cutoff_(true),
   bias_cutoff_active_(false)
@@ -104,7 +104,7 @@ TargetDistribution::TargetDistribution(const ActionOptions&ao):
 TargetDistribution::~TargetDistribution() {
 }
 double TargetDistribution::getBeta() const {
-  plumed_massert(vesbias_pntr_!=NULL,"The VesBias has to be linked to use TargetDistribution::getBeta()");
+  plumed_massert(vesbias_pntr_!=nullptr,"The VesBias has to be linked to use TargetDistribution::getBeta()");
   return vesbias_pntr_->getBeta();
 }
 
@@ -282,11 +282,11 @@ void TargetDistribution::updateTargetDist() {
 
 
 void TargetDistribution::updateBiasCutoffForTargetDistGrid() {
-  plumed_massert(vesbias_pntr_!=NULL,"The VesBias has to be linked to use updateBiasCutoffForTargetDistGrid()");
+  plumed_massert(vesbias_pntr_!=nullptr,"The VesBias has to be linked to use updateBiasCutoffForTargetDistGrid()");
   plumed_massert(vesbias_pntr_->biasCutoffActive(),"updateBiasCutoffForTargetDistGrid() should only be used if the bias cutoff is active");
-  // plumed_massert(targetdist_grid_pntr_!=NULL,"the grids have not been setup using setupGrids");
-  // plumed_massert(log_targetdist_grid_pntr_!=NULL,"the grids have not been setup using setupGrids");
-  plumed_massert(getBiasWithoutCutoffGridPntr()!=NULL,"the bias without cutoff grid has to be linked");
+  // plumed_massert(targetdist_grid_pntr_!=nullptr,"the grids have not been setup using setupGrids");
+  // plumed_massert(log_targetdist_grid_pntr_!=nullptr,"the grids have not been setup using setupGrids");
+  plumed_massert(getBiasWithoutCutoffGridPntr()!=nullptr,"the bias without cutoff grid has to be linked");
   //
   std::vector<double> integration_weights = GridIntegrationWeights::getIntegrationWeights(targetdist_grid_pntr_.get());
   double norm = 0.0;
@@ -310,8 +310,8 @@ void TargetDistribution::updateBiasCutoffForTargetDistGrid() {
 }
 
 void TargetDistribution::applyTargetDistModiferToGrid(TargetDistModifer* modifer_pntr) {
-  // plumed_massert(targetdist_grid_pntr_!=NULL,"the grids have not been setup using setupGrids");
-  // plumed_massert(log_targetdist_grid_pntr_!=NULL,"the grids have not been setup using setupGrids");
+  // plumed_massert(targetdist_grid_pntr_!=nullptr,"the grids have not been setup using setupGrids");
+  // plumed_massert(log_targetdist_grid_pntr_!=nullptr,"the grids have not been setup using setupGrids");
   //
   std::vector<double> integration_weights = GridIntegrationWeights::getIntegrationWeights(targetdist_grid_pntr_.get());
   double norm = 0.0;

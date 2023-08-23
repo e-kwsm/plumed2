@@ -254,7 +254,7 @@ double TD_Custom::getValue(const std::vector<double>& argument) const {
 
 void TD_Custom::updateGrid() {
   if(use_fes_) {
-    plumed_massert(getFesGridPntr()!=NULL,"the FES grid has to be linked to the free energy in the target distribution");
+    plumed_massert(getFesGridPntr()!=nullptr,"the FES grid has to be linked to the free energy in the target distribution");
   }
   if(use_kbt_) {
     if(kbt_var_lepton_ref_) {*kbt_var_lepton_ref_= 1.0/getBeta();}

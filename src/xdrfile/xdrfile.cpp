@@ -243,24 +243,24 @@ xdrfile_open(const char *path, const char *mode)
 		snprintf(newmode,5,"rb");
 		xdrmode = XDR_DECODE;
 	} else /* cannot determine mode */
-		return NULL;
+		return nullptr;
   
-	if((xfp=(XDRFILE *)malloc(sizeof(XDRFILE)))==NULL)
-		return NULL;
-	if((xfp->fp=fopen(path,newmode))==NULL)
+	if((xfp=(XDRFILE *)malloc(sizeof(XDRFILE)))==nullptr)
+		return nullptr;
+	if((xfp->fp=fopen(path,newmode))==nullptr)
     {
 		free(xfp);
-		return NULL;
+		return nullptr;
 	}
-	if((xfp->xdr=(XDR *)malloc(sizeof(XDR)))==NULL) 
+	if((xfp->xdr=(XDR *)malloc(sizeof(XDR)))==nullptr) 
     {
 		fclose(xfp->fp);
 		free(xfp);
-		return NULL;
+		return nullptr;
 	}
 	xfp->mode=*mode;
 	xdrstdio_create((XDR *)(xfp->xdr),xfp->fp,xdrmode);
-	xfp->buf1 = xfp->buf2 = NULL;
+	xfp->buf1 = xfp->buf2 = nullptr;
 	xfp->buf1size = xfp->buf2size = 0;
 	return xfp;
 }
@@ -828,7 +828,7 @@ xdrfile_decompress_coord_float(float     *ptr,
     bitsizeint[1] = 0;
     bitsizeint[2] = 0;
 
-	if(xfp==NULL || ptr==NULL)
+	if(xfp==nullptr || ptr==nullptr)
 		return -1;
 	tmp=xdrfile_read_int(&lsize,1,xfp);
 	if(tmp==0)
@@ -843,14 +843,14 @@ xdrfile_decompress_coord_float(float     *ptr,
 	size3 = *size * 3;
 	if(size3>xfp->buf1size) 
     {
-		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==NULL) 
+		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==nullptr) 
         {
 			fprintf(stderr,"Cannot allocate memory for decompressing coordinates.\n");
 			return -1; 
 		}
 		xfp->buf1size=size3;
 		xfp->buf2size=size3*1.2;
-		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==NULL)
+		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==nullptr)
         {
 			fprintf(stderr,"Cannot allocate memory for decompressing coordinates.\n");
 			return -1;
@@ -1029,7 +1029,7 @@ xdrfile_compress_coord_float(float   *ptr,
 	int errval=1;
 	unsigned int bitsize;
   
-	if(xfp==NULL)
+	if(xfp==nullptr)
 		return -1;
 	size3=3*size;
     
@@ -1039,14 +1039,14 @@ xdrfile_compress_coord_float(float   *ptr,
 
 	if(size3>xfp->buf1size)
     {
-		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==NULL) 
+		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==nullptr) 
         {
 			fprintf(stderr,"Cannot allocate memory for compressing coordinates.\n");
 			return -1;
 		}
 		xfp->buf1size=size3;
 		xfp->buf2size=size3*1.2;
-		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==NULL)
+		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==nullptr)
         {
 			fprintf(stderr,"Cannot allocate memory for compressing coordinates.\n");
 			return -1;
@@ -1325,7 +1325,7 @@ xdrfile_decompress_coord_double(double     *ptr,
     bitsizeint[1] = 0;
     bitsizeint[2] = 0;
 
-	if(xfp==NULL || ptr==NULL)
+	if(xfp==nullptr || ptr==nullptr)
 		return -1;
 	tmp=xdrfile_read_int(&lsize,1,xfp);
 	if(tmp==0)
@@ -1340,14 +1340,14 @@ xdrfile_decompress_coord_double(double     *ptr,
 	size3 = *size * 3;
 	if(size3>xfp->buf1size) 
     {
-		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==NULL) 
+		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==nullptr) 
         {
 			fprintf(stderr,"Cannot allocate memory for decompression coordinates.\n");
 			return -1; 
 		}
 		xfp->buf1size=size3;
 		xfp->buf2size=size3*1.2;
-		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==NULL)
+		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==nullptr)
         {
 			fprintf(stderr,"Cannot allocate memory for decompressing coordinates.\n");
 			return -1;
@@ -1526,17 +1526,17 @@ xdrfile_compress_coord_double(double   *ptr,
     bitsizeint[1] = 0;
     bitsizeint[2] = 0;
 
-	if(xfp==NULL)
+	if(xfp==nullptr)
 		return -1;
 	size3=3*size;
 	if(size3>xfp->buf1size) {
-		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==NULL) {
+		if((xfp->buf1=(int *)malloc(sizeof(int)*size3))==nullptr) {
 			fprintf(stderr,"Cannot allocate memory for compressing coordinates.\n");
 			return -1;
 		}
 		xfp->buf1size=size3;
 		xfp->buf2size=size3*1.2;
-		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==NULL) {
+		if((xfp->buf2=(int *)malloc(sizeof(int)*xfp->buf2size))==nullptr) {
 			fprintf(stderr,"Cannot allocate memory for compressing coordinates.\n");
 			return -1;
 		}
@@ -1798,13 +1798,13 @@ F77_FUNC(xdropen,XDROPEN)(int *fid, char *filename, char *mode,
 	/* zero array at first invocation */
 	if(f77init) {
 		for(i=0;i<MAX_FORTRAN_XDR;i++)
-			f77xdr[i]=NULL;
+			f77xdr[i]=nullptr;
 		f77init=0;
 	}
 	i=0;
   
 	/* nf77xdr is always smaller or equal to MAX_FORTRAN_XDR */
-	while(i<MAX_FORTRAN_XDR && f77xdr[i]!=NULL)
+	while(i<MAX_FORTRAN_XDR && f77xdr[i]!=nullptr)
 		i++;
 	if(i==MAX_FORTRAN_XDR) {
 		*fid = -1;
@@ -1825,7 +1825,7 @@ F77_FUNC(xdrclose,XDRCLOSE)(int *fid)
     /* first close it */
     xdrfile_close(f77xdr[*fid]);
     /* the remove it from file handle list */
-    f77xdr[*fid]=NULL;
+    f77xdr[*fid]=nullptr;
 }
 
 
@@ -1960,7 +1960,7 @@ F77_FUNC(xdrrstring,XDRRSTRING)(int *fid, char *str, int *ret, int len)
 {
 	char *cstr;
   
-	if((cstr=(char*)malloc((len+1)*sizeof(char)))==NULL) {
+	if((cstr=(char*)malloc((len+1)*sizeof(char)))==nullptr) {
 		*ret = 0;
 		return;
 	}
@@ -1980,7 +1980,7 @@ F77_FUNC(xdrwstring,XDRWSTRING)(int *fid, char *str, int *ret, int len)
 {
 	char *cstr;
   
-	if((cstr=(char*)malloc((len+1)*sizeof(char)))==NULL) {
+	if((cstr=(char*)malloc((len+1)*sizeof(char)))==nullptr) {
 		*ret = 0;
 		return;
 	}
@@ -2369,13 +2369,13 @@ xdr_string (XDR *xdrs, char **cpp, unsigned int maxsize)
 	switch (xdrs->x_op)
 		{
 		case XDR_FREE:
-			if (sp == NULL)
+			if (sp == nullptr)
 				{
 					return 1;		/* already free */
 				}
 			/* fall through... */
 		case XDR_ENCODE:
-			if (sp == NULL)
+			if (sp == nullptr)
 				return 0;
 			size = strlen (sp);
 			break;
@@ -2402,9 +2402,9 @@ xdr_string (XDR *xdrs, char **cpp, unsigned int maxsize)
 				{
 					return 1;
 				}
-			if (sp == NULL)
+			if (sp == nullptr)
 				*cpp = sp = (char *) malloc (nodesize);
-			if (sp == NULL)
+			if (sp == nullptr)
 				{
 					(void) fputs ("xdr_string: out of memory\n", stderr);
 					return 0;
@@ -2417,7 +2417,7 @@ xdr_string (XDR *xdrs, char **cpp, unsigned int maxsize)
 
 		case XDR_FREE:
 			free (sp);
-			*cpp = NULL;
+			*cpp = nullptr;
 			return 1;
 		}
 	return 0;

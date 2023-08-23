@@ -203,9 +203,9 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
 				   matrix box,rvec *x,rvec *v,rvec *f)
 {
 	double pvd[DIM*DIM];
-	double *dx=NULL;
+	double *dx=nullptr;
 	float  pvf[DIM*DIM];
-	float  *fx=NULL;
+	float  *fx=nullptr;
 	int    i,j;
 	
 	if (sh->bDouble) 
@@ -216,7 +216,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<DIM); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != box)
+                        if (nullptr != box)
                         {
                             pvd[i*DIM+j] = box[i][j];
                         }
@@ -225,7 +225,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<DIM); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != box)
+                        if (nullptr != box)
                         {
                             box[i][j] = pvd[i*DIM+j];
                         }
@@ -248,7 +248,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
 		
 		if ((sh->x_size != 0) || (sh->v_size != 0) || (sh->f_size != 0)) {
 			dx = (double *)calloc(sh->natoms*DIM,sizeof(dx[0]));
-			if (NULL == dx)
+			if (nullptr == dx)
 				return exdrNOMEM;
 		}
 		if (sh->x_size   != 0) 
@@ -257,7 +257,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != x)
+                        if (nullptr != x)
                         {
                             dx[i*DIM+j] = x[i][j];
                         }
@@ -268,7 +268,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
                 {
                     for(i=0; (i<sh->natoms); i++)
                         for(j=0; (j<DIM); j++)
-                            if (NULL != x)
+                            if (nullptr != x)
                             {
                                 x[i][j] = dx[i*DIM+j];
                             }
@@ -283,7 +283,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != x)
+                        if (nullptr != x)
                         {
                             dx[i*DIM+j] = v[i][j];
                         }
@@ -292,7 +292,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != v)
+                        if (nullptr != v)
                         {
                             v[i][j] = dx[i*DIM+j];
                         }
@@ -306,7 +306,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != x)
+                        if (nullptr != x)
                         {
                             dx[i*DIM+j] = f[i][j];
                         }
@@ -317,7 +317,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
                 {
                     for(j=0; (j<DIM); j++)
                     {
-                        if (NULL != f)
+                        if (nullptr != f)
                         {
                             f[i][j] = dx[i*DIM+j];
                         }
@@ -340,7 +340,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<DIM); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != box)
+                        if (nullptr != box)
                         {
                             pvf[i*DIM+j] = box[i][j];
                         }
@@ -351,7 +351,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
                 {
                     for(j=0; (j<DIM); j++)
                     {
-                        if (NULL != box)
+                        if (nullptr != box)
                         {
                             box[i][j] = pvf[i*DIM+j];
                         }
@@ -376,7 +376,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
 		
 		if ((sh->x_size != 0) || (sh->v_size != 0) || (sh->f_size != 0)) {
 			fx = (float *)calloc(sh->natoms*DIM,sizeof(fx[0]));
-			if (NULL == fx)
+			if (nullptr == fx)
 				return exdrNOMEM;
 		}
 		if (sh->x_size   != 0) 
@@ -385,7 +385,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != x)
+                        if (nullptr != x)
                         {
                             fx[i*DIM+j] = x[i][j];
                         }
@@ -396,7 +396,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
                 {
                     for(i=0; (i<sh->natoms); i++)
                         for(j=0; (j<DIM); j++)
-                            if (NULL != x)
+                            if (nullptr != x)
                                 x[i][j] = fx[i*DIM+j];
                 }
             }
@@ -409,7 +409,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != x)
+                        if (nullptr != x)
                         {
                             fx[i*DIM+j] = v[i][j];
                         }
@@ -418,7 +418,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != v)
+                        if (nullptr != v)
                             v[i][j] = fx[i*DIM+j];
             }
             else
@@ -430,7 +430,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != x)
+                        if (nullptr != x)
                         {
                             fx[i*DIM+j] = f[i][j];
                         }
@@ -439,7 +439,7 @@ static int do_htrn(XDRFILE *xd,mybool bRead,t_trnheader *sh,
             {
                 for(i=0; (i<sh->natoms); i++)
                     for(j=0; (j<DIM); j++)
-                        if (NULL != f)
+                        if (nullptr != f)
                             f[i][j] = fx[i*DIM+j];
             }
             else
@@ -461,10 +461,10 @@ static int do_trn(XDRFILE *xd,mybool bRead,int *step,float *t,float *lambda,
     sh = (t_trnheader *)calloc(1,sizeof(*sh));
   
     if (!bRead) {
-        sh->box_size = (NULL != box) ? sizeof(matrix):0;
-        sh->x_size   = ((NULL != x) ? (*natoms*sizeof(x[0])):0);
-        sh->v_size   = ((NULL != v) ? (*natoms*sizeof(v[0])):0);
-        sh->f_size   = ((NULL != f) ? (*natoms*sizeof(f[0])):0);
+        sh->box_size = (nullptr != box) ? sizeof(matrix):0;
+        sh->x_size   = ((nullptr != x) ? (*natoms*sizeof(x[0])):0);
+        sh->v_size   = ((nullptr != v) ? (*natoms*sizeof(v[0])):0);
+        sh->f_size   = ((nullptr != f) ? (*natoms*sizeof(f[0])):0);
         sh->natoms = *natoms;
         sh->step   = *step;
         sh->nre    = 0;
@@ -502,7 +502,7 @@ int read_trr_natoms(char *fn,int *natoms)
 	int  result;
 	
 	xd = xdrfile_open(fn,"r");
-	if (NULL == xd)
+	if (nullptr == xd)
 		return exdrFILENOTFOUND;
 	if ((result = do_trnheader(xd,1,&sh)) != exdrOK)
 		return result;

@@ -250,7 +250,7 @@ void TD_Multicanonical::updateGrid() {
       double beta = getBeta();
       double beta_prime_min = 1./(plumed.getAtoms().getKBoltzmann()*min_temp_);
       double beta_prime_max = 1./(plumed.getAtoms().getKBoltzmann()*max_temp_);
-      plumed_massert(getFesGridPntr()!=NULL,"the FES grid has to be linked to use TD_Multicanonical!");
+      plumed_massert(getFesGridPntr()!=nullptr,"the FES grid has to be linked to use TD_Multicanonical!");
       // Find minimum of F(U) at temperature min
       double minval=DBL_MAX;
       Grid::index_t minindex = (targetDistGrid().getSize())/2;
@@ -365,7 +365,7 @@ void TD_Multicanonical::updateGrid() {
       double beta = getBeta();
       double beta_prime_min = 1./(plumed.getAtoms().getKBoltzmann()*min_temp_);
       double beta_prime_max = 1./(plumed.getAtoms().getKBoltzmann()*max_temp_);
-      plumed_massert(getFesGridPntr()!=NULL,"the FES grid has to be linked to use TD_Multicanonical!");
+      plumed_massert(getFesGridPntr()!=nullptr,"the FES grid has to be linked to use TD_Multicanonical!");
       // Set all to zero
       for(Grid::index_t l=0; l<targetDistGrid().getSize(); l++) {
         double value = exp(-1.0*epsilon_);

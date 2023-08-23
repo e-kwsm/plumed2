@@ -73,7 +73,7 @@ void Moments::reserveKeyword( Keywords& keys ) {
 Moments::Moments( const vesselbase::VesselOptions& da) :
   Vessel(da)
 {
-  mystash = getAction()->buildDataStashes( NULL );
+  mystash = getAction()->buildDataStashes( nullptr );
   ActionWithValue* a=dynamic_cast<ActionWithValue*>( getAction() );
   plumed_massert(a,"cannot create passable values as base action does not inherit from ActionWithValue");
 

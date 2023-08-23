@@ -102,9 +102,9 @@ Optimizer::Optimizer(const ActionOptions&ao):
     plumed_massert(pntrs_coeffs.size()==pntrs_gradient.size(),"something wrong in the coefficients and gradient passed from VES bias");
     plumed_massert(pntrs_coeffs.size()==pntrs_targetdist_averages.size(),"something wrong in the coefficients and target distribution averages passed from VES bias");
     for(unsigned int k=0; k<pntrs_coeffs.size(); k++) {
-      plumed_massert(pntrs_coeffs[k] != NULL,"some coefficient is not linked correctly");
-      plumed_massert(pntrs_gradient[k] != NULL,"some gradient is not linked correctly");
-      plumed_massert(pntrs_targetdist_averages[k] != NULL,"some target distribution average is not linked correctly");
+      plumed_massert(pntrs_coeffs[k] != nullptr,"some coefficient is not linked correctly");
+      plumed_massert(pntrs_gradient[k] != nullptr,"some gradient is not linked correctly");
+      plumed_massert(pntrs_targetdist_averages[k] != nullptr,"some target distribution average is not linked correctly");
       pntrs_coeffs[k]->turnOnIterationCounter();
       coeffs_pntrs_.push_back(pntrs_coeffs[k]);
       pntrs_gradient[k]->turnOnIterationCounter();
@@ -955,7 +955,7 @@ std::vector<CoeffsMatrix*> Optimizer::enableHessian(VesBias* bias_pntr_in, const
   bias_pntr_in->enableHessian(diagonal_hessian);
   std::vector<CoeffsMatrix*> hessian_pntrs_out = bias_pntr_in->getHessianPntrs();
   for(unsigned int k=0; k<hessian_pntrs_out.size(); k++) {
-    plumed_massert(hessian_pntrs_out[k] != NULL,"Hessian is needed but not linked correctly");
+    plumed_massert(hessian_pntrs_out[k] != nullptr,"Hessian is needed but not linked correctly");
   }
   return hessian_pntrs_out;
 }
@@ -966,7 +966,7 @@ std::vector<CoeffsMatrix*> Optimizer::enableHessian(VesBias* bias_pntr_in, const
 //   diagonal_hessian_=true;
 //   bias_pntr_in->enableHessian(diagonal_hessian_);
 //   CoeffsMatrix* hessian_pntr_out = bias_pntr_in->getHessianPntr();
-//   plumed_massert(hessian_pntr_out != NULL,"Hessian is needed but not linked correctly");
+//   plumed_massert(hessian_pntr_out != nullptr,"Hessian is needed but not linked correctly");
 //   //
 //   log.printf("  %s (with label %s): switching to a diagonal Hessian for VES bias %s (with label %s) at time  %f\n",getName().c_str(),getLabel().c_str(),bias_pntr_in->getName().c_str(),bias_pntr_in->getLabel().c_str(),getTime());
 //   return hessian_pntr_out;
@@ -978,7 +978,7 @@ std::vector<CoeffsMatrix*> Optimizer::enableHessian(VesBias* bias_pntr_in, const
 //   diagonal_hessian_=false;
 //   bias_pntr_in->enableHessian(diagonal_hessian_);
 //   CoeffsMatrix* hessian_pntr_out = bias_pntr_in->getHessianPntr();
-//   plumed_massert(hessian_pntr_out != NULL,"Hessian is needed but not linked correctly");
+//   plumed_massert(hessian_pntr_out != nullptr,"Hessian is needed but not linked correctly");
 //   //
 //   log.printf("  %s (with label %s): switching to a diagonal Hessian for VES bias %s (with label %s) at time  %f\n",getName().c_str(),getLabel().c_str(),bias_pntr_in->getName().c_str(),bias_pntr_in->getLabel().c_str(),getTime());
 //   return hessian_pntr_out;

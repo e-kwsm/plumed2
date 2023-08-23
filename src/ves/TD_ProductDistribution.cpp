@@ -132,7 +132,7 @@ TD_ProductDistribution::TD_ProductDistribution(const ActionOptions& ao):
   }
 
   ndist_ = distribution_pntrs_.size();
-  grid_pntrs_.assign(ndist_,NULL);
+  grid_pntrs_.assign(ndist_,nullptr);
   setDimension(ndist_);
 
   checkRead();

@@ -337,7 +337,7 @@ VesLinearExpansion::VesLinearExpansion(const ActionOptions&ao):
   PLUMED_VES_VESBIAS_INIT(ao),
   nargs_(getNumberOfArguments()),
   basisf_pntrs_(0),
-  valueForce2_(NULL),
+  valueForce2_(nullptr),
   all_values_inside(true),
   bf_values(0),
   bf_values_set(false)

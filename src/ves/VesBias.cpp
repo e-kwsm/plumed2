@@ -48,7 +48,7 @@ VesBias::VesBias(const ActionOptions&ao):
   use_multiple_coeffssets_(false),
   coeffs_fnames(0),
   ncoeffs_total_(0),
-  optimizer_pntr_(NULL),
+  optimizer_pntr_(nullptr),
   optimize_coeffs_(false),
   compute_hessian_(false),
   diagonal_hessian_(true),
@@ -562,7 +562,7 @@ unsigned int VesBias::getIterationCounter() const {
 
 void VesBias::linkOptimizer(Optimizer* optimizer_pntr_in) {
   //
-  if(optimizer_pntr_==NULL) {
+  if(optimizer_pntr_==nullptr) {
     optimizer_pntr_ = optimizer_pntr_in;
   }
   else {

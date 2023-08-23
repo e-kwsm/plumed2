@@ -31,8 +31,8 @@ BridgeVessel::BridgeVessel( const VesselOptions& da ):
   Vessel(da),
   inum(0),
 // in_normal_calculate(false)
-  myOutputAction(NULL),
-  myOutputValues(NULL),
+  myOutputAction(nullptr),
+  myOutputValues(nullptr),
   my_tmp_val(0,0)
 {
 }

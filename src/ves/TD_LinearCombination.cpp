@@ -182,7 +182,7 @@ TD_LinearCombination::TD_LinearCombination(const ActionOptions& ao):
   }
 
   ndist_ = distribution_pntrs_.size();
-  grid_pntrs_.assign(ndist_,NULL);
+  grid_pntrs_.assign(ndist_,nullptr);
   if(ndist_==0) {plumed_merror(getName()+ ": no distributions are given.");}
   if(ndist_==1) {plumed_merror(getName()+ ": giving only one distribution does not make sense.");}
   //

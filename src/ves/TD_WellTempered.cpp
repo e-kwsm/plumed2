@@ -145,7 +145,7 @@ double TD_WellTempered::getValue(const std::vector<double>& argument) const {
 
 void TD_WellTempered::updateGrid() {
   double beta_prime = getBeta()/bias_factor_;
-  plumed_massert(getFesGridPntr()!=NULL,"the FES grid has to be linked to use TD_WellTempered!");
+  plumed_massert(getFesGridPntr()!=nullptr,"the FES grid has to be linked to use TD_WellTempered!");
   std::vector<double> integration_weights = GridIntegrationWeights::getIntegrationWeights(getTargetDistGridPntr());
   double norm = 0.0;
   for(Grid::index_t l=0; l<targetDistGrid().getSize(); l++) {

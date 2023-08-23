@@ -37,8 +37,8 @@ void ActionWithInputVessel::registerKeywords(Keywords& keys) {
 
 ActionWithInputVessel::ActionWithInputVessel(const ActionOptions&ao):
   Action(ao),
-  arguments(NULL),
-  myBridgeVessel(NULL)
+  arguments(nullptr),
+  myBridgeVessel(nullptr)
 {
 }
 
@@ -62,7 +62,7 @@ void ActionWithInputVessel::readArgument( const std::string& type ) {
     plumed_assert(aves); myBridgeVessel = mves->addBridgingVessel( aves );
     arguments = dynamic_cast<Vessel*>( myBridgeVessel );
   } else  if( type=="store" ) {
-    arguments = dynamic_cast<Vessel*>( mves->buildDataStashes( NULL ) );
+    arguments = dynamic_cast<Vessel*>( mves->buildDataStashes( nullptr ) );
   } else {
     plumed_error();
   }

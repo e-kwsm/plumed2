@@ -122,7 +122,7 @@ int read_xtc_natoms(char *fn,int *natoms)
 	float time;
 	
 	xd = xdrfile_open(fn,"r");
-	if (NULL == xd)
+	if (nullptr == xd)
 		return exdrFILENOTFOUND;
 	result = xtc_header(xd,natoms,&step,&time,TRUE);
 	xdrfile_close(xd);

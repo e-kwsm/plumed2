@@ -160,7 +160,7 @@ OutputBasisFunctions::OutputBasisFunctions(const ActionOptions&ao):
   parseFlag("NUMERICAL_DERIVATIVES",numerical_deriv);
 
   std::vector<TargetDistribution*> targetdist_pntrs;
-  targetdist_pntrs.push_back(NULL);
+  targetdist_pntrs.push_back(nullptr);
   std::string targetdist_label="";
   for(int i=1;; i++) {
     if(!parseNumbered("TARGET_DISTRIBUTION",i,targetdist_label)) {break;}
@@ -203,7 +203,7 @@ OutputBasisFunctions::OutputBasisFunctions(const ActionOptions&ao):
   for(unsigned int i=0; i<targetdist_pntrs.size(); i++) {
     std::string is; Tools::convert(i,is);
     //
-    if(targetdist_pntrs[i]!=NULL) {
+    if(targetdist_pntrs[i]!=nullptr) {
       targetdist_pntrs[i]->setupGrids(Tools::unique2raw(arguments),grid_min,grid_max,grid_bins);
       plumed_massert(targetdist_pntrs[i]->getDimension()==1,"the target distribution must be one dimensional");
       targetdist_pntrs[i]->updateTargetDist();
@@ -214,7 +214,7 @@ OutputBasisFunctions::OutputBasisFunctions(const ActionOptions&ao):
     targetdist_averages.setValues(bf_integrals);
     if(fmt_targetdist_aver.size()>0) {targetdist_averages.setOutputFmt(fmt_targetdist_aver);}
     targetdist_averages.writeToFile(ofile_targetdist_aver,true);
-    if(targetdist_pntrs[i]!=NULL) {
+    if(targetdist_pntrs[i]!=nullptr) {
       Grid* targetdist_grid_pntr = targetdist_pntrs[i]->getTargetDistGridPntr();
       std::string fname = FileBase::appendSuffix(fname_targetdist,is);
       OFile ofile;
