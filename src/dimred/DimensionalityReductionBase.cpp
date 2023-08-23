@@ -36,7 +36,7 @@ void DimensionalityReductionBase::registerKeywords( Keywords& keys ) {
 DimensionalityReductionBase::DimensionalityReductionBase( const ActionOptions& ao ):
   Action(ao),
   analysis::AnalysisBase(ao),
-  dimredbase(NULL)
+  dimredbase(nullptr)
 {
   // Check that some dissimilarity information is available
   if( my_input_data ) {

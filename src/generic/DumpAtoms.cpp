@@ -296,7 +296,7 @@ void DumpAtoms::update() {
     if(type=="xtc") {
       write_xtc(xd,natoms,step,time,box,&pos[0],precision);
     } else if(type=="trr") {
-      write_trr(xd,natoms,step,time,0.0,box,&pos[0],NULL,NULL);
+      write_trr(xd,natoms,step,time,0.0,box,&pos[0],nullptr,nullptr);
     }
   } else plumed_merror("unknown file type "+type);
 }

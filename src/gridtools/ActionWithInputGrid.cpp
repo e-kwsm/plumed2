@@ -35,7 +35,7 @@ void ActionWithInputGrid::registerKeywords( Keywords& keys ) {
 ActionWithInputGrid::ActionWithInputGrid(const ActionOptions&ao):
   Action(ao),
   ActionWithGrid(ao),
-  ingrid(NULL)
+  ingrid(nullptr)
 {
   std::string mlab; parse("GRID",mlab);
   vesselbase::ActionWithVessel* mves= plumed.getActionSet().selectWithLabel<vesselbase::ActionWithVessel*>(mlab);

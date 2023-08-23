@@ -37,7 +37,7 @@ void ActionWithGrid::registerKeywords( Keywords& keys ) {
 ActionWithGrid::ActionWithGrid( const ActionOptions& ao):
   Action(ao),
   ActionWithAveraging(ao),
-  mygrid(NULL)
+  mygrid(nullptr)
 {
 }
 

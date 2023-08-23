@@ -222,7 +222,7 @@ FISST::FISST(const ActionOptions&ao):
   reset_period_(0),
   observable_freq_(0),
   kbt_(0.0),
-  value_force2_(NULL)
+  value_force2_(nullptr)
 {
   if(ncvs_==0)
     error("Must specify at least one CV with ARG");

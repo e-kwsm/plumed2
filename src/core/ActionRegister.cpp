@@ -69,7 +69,7 @@ bool ActionRegister::check(const std::string & key) {
 }
 
 std::unique_ptr<Action> ActionRegister::create(const ActionOptions&ao) {
-  if(ao.line.size()<1)return NULL;
+  if(ao.line.size()<1)return nullptr;
   // Create a copy of the manual locally. The manual is
   // then added to the ActionOptions. This allows us to
   // ensure during construction that all the keywords for

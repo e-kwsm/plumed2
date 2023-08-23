@@ -153,7 +153,7 @@ FindContour::FindContour(const ActionOptions&ao):
   }
   else lenunit=1.0;
   of.link(*this); of.open(file);
-  checkRead(); mydata=buildDataStashes( NULL );
+  checkRead(); mydata=buildDataStashes( nullptr );
 }
 
 void FindContour::prepareForAveraging() {

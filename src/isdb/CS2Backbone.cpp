@@ -419,7 +419,7 @@ class CS2Backbone : public MetainferenceBase {
 
     ChemicalShift():
       exp_cs(0.),
-      comp(NULL),
+      comp(nullptr),
       res_kind(0),
       atm_kind(0),
       res_type_prev(0),

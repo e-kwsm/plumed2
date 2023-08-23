@@ -322,7 +322,7 @@ void EMMI::unlockRequests() {
 }
 
 inline
-void EMMI::calculateNumericalDerivatives( ActionWithValue* a=NULL ) {
+void EMMI::calculateNumericalDerivatives( ActionWithValue* a=nullptr ) {
   if( getNumberOfArguments()>0 ) {
     ActionWithArguments::calculateNumericalDerivatives( a );
   }
@@ -739,7 +739,7 @@ EMMI::EMMI(const ActionOptions&ao):
 
   // initialize random seed
   unsigned iseed;
-  if(rank_==0) iseed = time(NULL)+replica_;
+  if(rank_==0) iseed = time(nullptr)+replica_;
   else iseed = 0;
   comm.Sum(&iseed, 1);
   random_.setSeed(-iseed);

@@ -106,10 +106,10 @@ AsmJitRuntimePtr::~AsmJitRuntimePtr()
 #endif
 }
 
-CompiledExpression::CompiledExpression() : jitCode(NULL) {
+CompiledExpression::CompiledExpression() : jitCode(nullptr) {
 }
 
-CompiledExpression::CompiledExpression(const ParsedExpression& expression) : jitCode(NULL) {
+CompiledExpression::CompiledExpression(const ParsedExpression& expression) : jitCode(nullptr) {
     ParsedExpression expr = expression.optimize(); // Just in case it wasn't already optimized.
     vector<pair<ExpressionTreeNode, int> > temps;
     compileExpression(expr.getRootNode(), temps);
@@ -125,11 +125,11 @@ CompiledExpression::CompiledExpression(const ParsedExpression& expression) : jit
 
 CompiledExpression::~CompiledExpression() {
     for (int i = 0; i < (int) operation.size(); i++)
-        if (operation[i] != NULL)
+        if (operation[i] != nullptr)
             delete operation[i];
 }
 
-CompiledExpression::CompiledExpression(const CompiledExpression& expression) : jitCode(NULL) {
+CompiledExpression::CompiledExpression(const CompiledExpression& expression) : jitCode(nullptr) {
     *this = expression;
 }
 

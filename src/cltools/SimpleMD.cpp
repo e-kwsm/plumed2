@@ -116,7 +116,7 @@ public:
     write_positions_first(true),
     write_statistics_first(true),
     write_statistics_last_time_reopened(0),
-    write_statistics_fp(NULL)
+    write_statistics_fp(nullptr)
   {
     inputdata=ifile;
   }

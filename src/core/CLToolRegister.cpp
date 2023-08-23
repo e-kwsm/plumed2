@@ -66,7 +66,7 @@ bool CLToolRegister::check(const std::string & key)const {
 }
 
 std::unique_ptr<CLTool> CLToolRegister::create(const CLToolOptions&ao) {
-  if(ao.line.size()<1)return NULL;
+  if(ao.line.size()<1)return nullptr;
   std::unique_ptr<CLTool> cltool;
   if(check(ao.line[0])) {
     CLToolOptions nao( ao,mk[ao.line[0]] );

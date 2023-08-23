@@ -307,9 +307,9 @@ extern "C" {
     plumed_assert(nothrow.handler) << "Accepting a null pointer here would make the calling code non compatible with plumed 2.5 to 2.7";
     safe.ptr=val;
     safe.nelem=0;
-    safe.shape=NULL;
+    safe.shape=nullptr;
     safe.flags=0;
-    safe.opt=NULL;
+    safe.opt=nullptr;
     plumed_plumedmain_cmd_safe_nothrow(plumed,key,safe,nothrow);
   }
 }
@@ -349,7 +349,7 @@ extern "C" void plumed_symbol_table_init() {
 
 namespace PLMD {
 
-#define plumed_convert_fptr(ptr,fptr) { ptr=NULL; std::memcpy(&ptr,&fptr,(sizeof(fptr)>sizeof(ptr)?sizeof(ptr):sizeof(fptr))); }
+#define plumed_convert_fptr(ptr,fptr) { ptr=nullptr; std::memcpy(&ptr,&fptr,(sizeof(fptr)>sizeof(ptr)?sizeof(ptr):sizeof(fptr))); }
 
 /// Static object which registers Plumed.
 /// This is a static object which, during its construction at startup,
@@ -381,7 +381,7 @@ public:
     if(debug) std::fprintf(stderr,"+++ Registering functions. Looking in RTLD_DEFAULT +++\n");
     void* dls=dlsym(RTLD_DEFAULT,"plumed_kernel_register");
 #else
-    handle=dlopen(NULL,RTLD_LOCAL);
+    handle=dlopen(nullptr,RTLD_LOCAL);
     if(debug) std::fprintf(stderr,"+++ Registering functions. dlopen handle at %p +++\n",handle);
     void* dls=dlsym(handle,"plumed_kernel_register");
 #endif

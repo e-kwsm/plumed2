@@ -78,7 +78,7 @@ std::unique_ptr<KernelFunctions> HistogramOnGrid::getKernelAndNeighbors( std::ve
   if( discrete ) {
     plumed_assert( getType()=="flat" );
     num_neigh=1; for(unsigned i=0; i<dimension; ++i) point[i] += 0.5*dx[i];
-    neighbors[0] = getIndex( point ); return NULL;
+    neighbors[0] = getIndex( point ); return nullptr;
   } else if( getType()=="flat" ) {
     auto kernel=Tools::make_unique<KernelFunctions>( point, bandwidths, kerneltype, "DIAGONAL", 1.0 );
 // GB: Now values is destroyed when exiting this function.
@@ -88,11 +88,11 @@ std::unique_ptr<KernelFunctions> HistogramOnGrid::getKernelAndNeighbors( std::ve
     return kernel;
   } else if( getType()=="fibonacci" ) {
     getNeighbors( point, nneigh, num_neigh, neighbors );
-    return NULL;
+    return nullptr;
   } else {
     plumed_error();
   }
-  return NULL;
+  return nullptr;
 }
 
 std::vector<std::unique_ptr<Value>> HistogramOnGrid::getVectorOfValues() const {

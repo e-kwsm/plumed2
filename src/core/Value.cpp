@@ -31,7 +31,7 @@
 namespace PLMD {
 
 Value::Value():
-  action(NULL),
+  action(nullptr),
   value_set(false),
   value(0.0),
   inputForce(0.0),
@@ -46,7 +46,7 @@ Value::Value():
 }
 
 Value::Value(const std::string& name):
-  action(NULL),
+  action(nullptr),
   value_set(false),
   value(0.0),
   inputForce(0.0),
@@ -171,7 +171,7 @@ double Value::projection(const Value& v1,const Value&v2) {
 }
 
 ActionWithValue* Value::getPntrToAction() {
-  plumed_assert( action!=NULL );
+  plumed_assert( action!=nullptr );
   return action;
 }
 

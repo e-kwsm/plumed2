@@ -78,7 +78,7 @@ void ProjectNonLandmarkPoints::registerKeywords( Keywords& keys ) {
 ProjectNonLandmarkPoints::ProjectNonLandmarkPoints( const ActionOptions& ao ):
   Action(ao),
   analysis::AnalysisBase(ao),
-  mybase(NULL)
+  mybase(nullptr)
 {
   std::string myproj; parse("PROJECTION",myproj);
   mybase = plumed.getActionSet().selectWithLabel<DimensionalityReductionBase*>( myproj );

@@ -336,7 +336,7 @@ EDS::EDS(const ActionOptions &ao) : PLUMED_BIAS_INIT(ao),
   means_(ncvs_, 0.0),
   step_size_(ncvs_, 0.0),
   pseudo_virial_(ncvs_),
-  out_coupling_(ncvs_, NULL),
+  out_coupling_(ncvs_, nullptr),
   in_restart_name_(""),
   out_restart_name_(""),
   fmt_("%f"),
@@ -361,7 +361,7 @@ EDS::EDS(const ActionOptions &ao) : PLUMED_BIAS_INIT(ao),
   pseudo_virial_sum_(0.0),
   max_logweight_(0.0),
   wsum_(0.0),
-  value_force2_(NULL)
+  value_force2_(nullptr)
 {
   double temp = -1.0;
   bool b_mean = false;

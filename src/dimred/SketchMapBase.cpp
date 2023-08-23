@@ -35,7 +35,7 @@ void SketchMapBase::registerKeywords( Keywords& keys ) {
 SketchMapBase::SketchMapBase( const ActionOptions& ao ):
   Action(ao),
   DimensionalityReductionBase(ao),
-  smapbase(NULL),
+  smapbase(nullptr),
   normw(0.0)
 {
   // Check if we have data from a input sketch-map object - we can reuse switching functions wahoo!!

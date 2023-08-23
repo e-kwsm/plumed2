@@ -294,7 +294,7 @@ Rescale::Rescale(const ActionOptions&ao):
   addComponent("wtbias");   componentIsNotPeriodic("wtbias");
 
   // initialize random seed
-  srand (time(NULL));
+  srand (time(nullptr));
 
   // read bias if restarting
   if(getRestart()) read_bias();

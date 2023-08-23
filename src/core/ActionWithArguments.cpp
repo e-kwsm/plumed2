@@ -80,7 +80,7 @@ void ActionWithArguments::interpretArgumentList(const std::vector<std::string>& 
         int errcode=regcomp(&reg, myregex.c_str(),REG_EXTENDED|REG_NEWLINE); // compile the regular expression
         if(errcode) {
           // one can check the errors asking to regerror
-          size_t errbuf_size = regerror(errcode, &reg, NULL, 0);
+          size_t errbuf_size = regerror(errcode, &reg, nullptr, 0);
           std::vector<char> errbuf(errbuf_size);
           regerror(errcode, &reg, errbuf.data(), errbuf_size);
           plumed_error()<<"Error parsing regular expression: "<<errbuf.data();

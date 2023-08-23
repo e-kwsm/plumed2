@@ -177,7 +177,7 @@ void Funnel::registerKeywords(Keywords& keys) {
 Funnel::Funnel(const ActionOptions& ao):
   PLUMED_BIAS_INIT(ao),
 // Old version 2.3
-// BiasGrid_(NULL),
+// BiasGrid_(nullptr),
   NBINS(500.0),
   NBINZ(500.0),
   MINS(0.0),
