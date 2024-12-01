@@ -12,7 +12,7 @@ fi
 
 export valgrind=env
 
-for opt in ${*}
+for opt in "$@"
 do
 case "$opt" in
 (--valgrind) valgrind="valgrind --leak-check=full --track-origins=yes" ;;
